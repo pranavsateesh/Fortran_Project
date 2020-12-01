@@ -37,13 +37,10 @@ xi(1) = 100.0             ! initial prey population
 xi(2) =  15.0             ! initial predator population
 !*** the itegration limit and step
 dt   = 0.2                ! step size for integration
-tmax = 10.0               ! integrate till tmax
+tmax = 100.0               ! integrate till tmax
 !*** end of initial data
 
 !* print the header and initial conditions
-write (6,*) '  Rabbits and foxes. Lotka-Volterra model '
-write (6,*) '     Method: Runge-Kutta 4th order     '
-write (6,100)
 write (6,102) ti, xi(1), xi(2)
 
 ! integration of ODEs
@@ -79,10 +76,10 @@ integer n
 double precision t
 double precision x(n), dx(n)
 ! Rabbits and foxes. Lotka-Volterra model
-double precision, parameter :: kr = 2.0  ! prey birth rate
-double precision, parameter :: kf = 1.0  ! predator death rate
-double precision, parameter :: kfr= 0.02 ! prey death from predators
-double precision, parameter :: krf= 0.01 ! predator birth
+double precision, parameter :: kr = 1.2  ! prey birth rate
+double precision, parameter :: kf = 2.0  ! predator death rate
+double precision, parameter :: kfr= 0.2 ! prey death from predators
+double precision, parameter :: krf= 0.15 ! predator birth
 !* first order
    dx(1) =  kr*x(1) - kfr*x(1)*x(2)
    dx(2) = -kf*x(2) + krf*x(1)*x(2)
