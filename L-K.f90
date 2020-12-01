@@ -19,8 +19,8 @@ subroutine fn(t, x, n, dx)
    animal3to1_deathrate = 0.5
    animal3to2_deathrate = 1.0
    animal1_deathrate = 1.0
-   animal2_deathrate = 1.0
-   animal3_deathrate = 1.0
+   animal2_deathrate = 5.0
+   animal3_deathrate = 5.0
 
    !Define first order DEs for return from the L-V Model
    inhibhillfunc11 = (animal1to2_deathrate**2/(animal1to2_deathrate**2 + x(2)**2))
@@ -82,7 +82,7 @@ program LV
    implicit none
    integer :: n, i
    real :: t0, tn, max_t, dt
-   real, dimension(2) :: x0, xn
+   real, dimension(3) :: x0, xn
 
    open(10, file="animals.txt", status="unknown", action="write")
 
@@ -98,7 +98,7 @@ program LV
    write(10,*), " Predator-Prey Ecology. Lotka-Volterra Model "
    write(10,*), "      Method: Fourth Order R-K       "
    write(10,1)
-   write(10,2), t0, x0(1), x0(2), x0)(3)  
+   write(10,2), t0, x0(1), x0(2), x0(3)  
 
    !Integration
    do while(t0 <= max_t)
