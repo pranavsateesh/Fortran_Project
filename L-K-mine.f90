@@ -5,10 +5,10 @@ subroutine fn(t, x, n, dx)
     real, dimension(n) :: x
     real, dimension(n), intent(out) :: dx
     !Initialize
-    prey_b = 2.0
-    pred_b = 0.01
-    prey_d = 0.02
-    pred_d = 1.0
+    prey_b = 2.0    !Prey Birth Rate
+    pred_b = 0.01   !Predator Birth Rate
+    prey_d = 0.02   !Prey Death
+    pred_d = 1.0    !Predator Death Rate
     !Define first order DEs for return from the L-V Model
     dx(1) = prey_b*x(1) - prey_d*x(1)*x(2)
     dx(2) = -pred_d*x(2) + pred_b*x(1)*x(2)
@@ -87,6 +87,8 @@ program LV
             x0(i) = xn(i)
         end do
     end do
+!Format in the text file
 1 format(5x,'T',11x,'Prey',11x,'Pred')
+!Using Scale Factor P for writing scientific data in terms of powers of 10
 2 format(3(1pe12.3))
 end program
